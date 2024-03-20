@@ -7,13 +7,17 @@
    :extra-paths ["dev-resources"]}
 
   :test
-  {:extra-deps {com.github.oliyh/martian-test {:mvn/version "0.1.26"}
+  {:extra-deps {ch.qos.logback/logback-classic {:mvn/version "1.5.3"}
+                com.github.oliyh/martian-test {:mvn/version "0.1.26"}
                 com.monkeyprojects/build {:mvn/version "0.2.0"}}
    :exec-fn monkey.test/all
    :extra-paths ["test"]}
 
   :watch
   {:exec-fn monkey.test/watch}
+
+  :junit
+  {:exec-fn monkey.test/junit}
 
   :jar
   {:extra-deps {com.monkeyprojects/build {:mvn/version "0.2.0"}}

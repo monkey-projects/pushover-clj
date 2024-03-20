@@ -29,4 +29,5 @@ then invoke the `post-message` function:
 # License
 
 Copyright (c) 2024 by [Monkey Projects BV](https://www.monkey-projects.be)
+
 [GPL v3 License](LICENSE)

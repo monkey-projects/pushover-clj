@@ -27,8 +27,8 @@
                    (s/optional-key :url_title) s/Str
                    (s/optional-key :html) (s/constrained s/Int #{0 1})
                    (s/optional-key :priority) (s/constrained s/Int (in-range -2 2))
-                   (s/optional-key :timestamp s/Int)
-                   (s/optional-key :ttl s/Int)}}}])
+                   (s/optional-key :timestamp) s/Int
+                   (s/optional-key :ttl) s/Int}}}])
 
 (defn make-client [opts]
   (let [opts (merge default-opts opts)]
