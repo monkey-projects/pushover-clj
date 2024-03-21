@@ -28,12 +28,15 @@
                   (s/optional-key :priority) (s/constrained s/Int (in-range -2 2))
                   (s/optional-key :timestamp) s/Int
                   (s/optional-key :ttl) s/Int}
-    :consumes ["application/x-www-form-urlencoded"]}])
+    :consumes ["application/x-www-form-urlencoded"]
+    :produces ["application/json"]}])
 
-(defn make-client [opts]
+(defn make-client [& [opts]]
   (let [opts (merge default-opts opts)]
     ;; TODO Allow specifying the token once when creating the client and use an interceptor
     (mh/bootstrap (:url opts) routes)))
 
 (defn post-message [client msg]
   (mc/response-for client :post-message msg))
+
+;; TODO Other calls

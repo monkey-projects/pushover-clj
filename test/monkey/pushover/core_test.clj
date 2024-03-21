@@ -10,10 +10,19 @@
     (is (map? (sut/make-client {})))))
 
 (deftest post-message
-  (testing "invokes `:post-message` route"
-    (let [client (-> (sut/make-client {})
-                     (mt/respond-with-generated {:post-message :success}))]
-      (is (some? (sut/post-message client
-                                   {:token "test-token"
-                                    :user "test-user"
-                                    :message "test-msg"}))))))
+  (let [client (-> (sut/make-client {})
+                   (mt/respond-with-generated {:post-message :random}))]
+    (testing "invokes `:post-message` route"
+      (is (nil? (-> (sut/post-message client
+                                      {:token "test-token"
+                                       :user "test-user"
+                                       :message "test-msg"})
+                    deref))))
+
+    (testing "fails when no user given"
+      (is (thrown? clojure.lang.ExceptionInfo
+                   (sut/post-message client
+                                     {:token "test-token"
+                                      :message "test-msg"}))))))
+
+;; TODO Add integration tests
