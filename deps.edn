@@ -26,5 +26,8 @@
                :version-env "LIB_VERSION"
                :lib com.monkeyprojects/pushover-clj}}
 
+  :publish
+  {:exec-fn monkey.build/jar+deploy}
+
   :install
   {:exec-fn monkey.build/jar+install}}}
